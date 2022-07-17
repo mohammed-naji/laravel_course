@@ -24,3 +24,7 @@ Route::get('new', function() {
 Route::get('about', function() {
     return 'About Us';
 });
+
+Route::get('news', function() {
+    return 'About Us';
+});
