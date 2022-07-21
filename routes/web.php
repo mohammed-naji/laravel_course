@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\WebController;
 
 // use
 // namespace
@@ -69,5 +70,12 @@ use App\Http\Controllers\HomeController;
 //     return 'Contact Us';
 // })->name('contactpage');
 
+Route::get('/test/new/ali/ahmed', [WebController::class, 'index'])->name('web.index');
 
-Route::get('/', [HomeController::class, 'index'])->name('homepage');
+Route::get('/about', [WebController::class, 'about'])->name('web.about');
+
+Route::get('/contact', [WebController::class, 'contact'])->name('web.contact');
+
+Route::get('/team', [WebController::class, 'team'])->name('web.team');
+
+Route::get('news/{id?}', [WebController::class, 'news'])->name('web.news');
