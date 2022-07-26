@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Site2Controller;
 use App\Http\Controllers\WebController;
 
 // use
@@ -70,7 +71,7 @@ use App\Http\Controllers\WebController;
 //     return 'Contact Us';
 // })->name('contactpage');
 
-Route::get('/test/new/ali/ahmed', [WebController::class, 'index'])->name('web.index');
+Route::get('/', [WebController::class, 'index'])->name('web.index');
 
 Route::get('/about', [WebController::class, 'about'])->name('web.about');
 
@@ -79,3 +80,15 @@ Route::get('/contact', [WebController::class, 'contact'])->name('web.contact');
 Route::get('/team', [WebController::class, 'team'])->name('web.team');
 
 Route::get('news/{id?}', [WebController::class, 'news'])->name('web.news');
+
+Route::prefix('site2')->name('site2.')->group(function() {
+    Route::get('/', [Site2Controller::class, 'index'])->name('index');
+
+    Route::get('/about', [Site2Controller::class, 'about'])->name('about');
+
+    Route::get('/contact', [Site2Controller::class, 'contact'])->name('contact');
+
+    Route::get('/post', [Site2Controller::class, 'post'])->name('post');
+});
+
+
