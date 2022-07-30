@@ -14,6 +14,8 @@
         </div>
     </div>
 </header>
+
+@include('site2.info', ['dev' => 'Ahmed Aref'])
 <!-- Main Content-->
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">

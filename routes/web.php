@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Site2Controller;
+use App\Http\Controllers\Site3Controller;
 use App\Http\Controllers\WebController;
 
 // use
@@ -92,3 +93,13 @@ Route::prefix('site2')->name('site2.')->group(function() {
 });
 
 
+Route::prefix('site3')->name('site3.')->group(function() {
+
+    Route::get('/', [Site3Controller::class, 'index'])->name('index');
+    Route::get('/experienc', [Site3Controller::class, 'experienc'])->name('experienc');
+    Route::get('/education', [Site3Controller::class, 'education'])->name('education');
+    Route::get('/skills', [Site3Controller::class, 'skills'])->name('skills');
+    Route::get('/interests', [Site3Controller::class, 'interests'])->name('interests');
+    Route::get('/awards', [Site3Controller::class, 'awards'])->name('awards');
+
+});

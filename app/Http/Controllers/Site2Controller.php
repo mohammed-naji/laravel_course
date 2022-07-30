@@ -15,7 +15,25 @@ class Site2Controller extends Controller
 
     public function about()
     {
-        return view('site2.about');
+        $data = [
+            [
+                'name' => 'Amal',
+                'email' => 'amal@gmail.com'
+            ],
+            [
+                'name' => 'Tahani',
+                'email' => 'tahani@gmail.com'
+            ],
+            [
+                'name' => 'Elias',
+                'email' => 'elias@gmail.com'
+            ],
+            [
+                'name' => 'lazar',
+                'email' => 'lazar@gmail.com'
+            ],
+        ];
+        return view('site2.about', compact('data'));
     }
 
     public function contact()
