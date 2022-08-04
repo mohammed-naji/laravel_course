@@ -30,7 +30,10 @@
 
             <div class="mb-3">
                 <label>Name</label>
-                <input class="form-control @error('name') is-invalid @enderror" type="text" placeholder="Name" name="name" />
+                <input class="form-control @error('name') is-invalid @enderror" type="text" placeholder="Name"
+                name="name" value="{{ old('name') }}"
+{{-- value="<?php //echo (isset($_POST['name']) ? $_POST['name'] : '' ) ?>" --}}
+                />
                 @error('name')
                     <small class="invalid-feedback">{{ $message }}</small>
                 @enderror
@@ -38,7 +41,7 @@
 
             <div class="mb-3">
                 <label>Email</label>
-                <input class="form-control @error('email') is-invalid @enderror" type="email" placeholder="Email" name="email" />
+                <input class="form-control @error('email') is-invalid @enderror" type="text" placeholder="Email" name="email" value="{{ old('email') }}" />
                 @error('email')
                     <small class="invalid-feedback">{{ $message }}</small>
                 @enderror
@@ -46,7 +49,7 @@
 
             <div class="mb-3">
                 <label>Password</label>
-                <input class="form-control @error('password') is-invalid @enderror" type="password" placeholder="Password" name="password" />
+                <input class="form-control @error('password') is-invalid @enderror" type="password" placeholder="Password" name="password" autocomplete="new-password" />
                 @error('password')
                     <small class="invalid-feedback">{{ $message }}</small>
                 @enderror
@@ -54,8 +57,16 @@
 
             <div class="mb-3">
                 <label>Confirm Password</label>
-                <input class="form-control @error('confirm_password') is-invalid @enderror" type="password" placeholder="Confirm Password" name="confirm_password" />
-                @error('confirm_password')
+                <input class="form-control @error('password_confirmation') is-invalid @enderror" type="password" placeholder="Confirm Password" name="password_confirmation" />
+                @error('password_confirmation')
+                    <small class="invalid-feedback">{{ $message }}</small>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label>Bio</label>
+                <textarea class="form-control @error('bio') is-invalid @enderror" type="text" placeholder="Bio" name="bio" rows="5">{{ old('bio') }}</textarea>
+                @error('bio')
                     <small class="invalid-feedback">{{ $message }}</small>
                 @enderror
             </div>
