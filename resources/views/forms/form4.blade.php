@@ -14,15 +14,7 @@
         {{-- @dump($errors->any()) --}}
         {{-- @dump($errors->all()) --}}
 
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+
         <form action="{{ route('form4_data') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">

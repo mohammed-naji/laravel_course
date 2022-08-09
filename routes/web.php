@@ -3,6 +3,7 @@
 use App\Http\Controllers\FormsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\Site2Controller;
 use App\Http\Controllers\Site3Controller;
 use App\Http\Controllers\WebController;
@@ -118,3 +119,8 @@ Route::post('form3', [FormsController::class, 'form3_data'])->name('form3_data')
 
 Route::get('form4', [FormsController::class, 'form4'])->name('form4');
 Route::post('form4', [FormsController::class, 'form4_data'])->name('form4_data');
+
+Route::get('send-mail', [MailController::class, 'send']);
+
+Route::get('contact-us', [MailController::class, 'contact_us']);
+Route::post('contact-us', [MailController::class, 'contact_us_data'])->name('contact');
