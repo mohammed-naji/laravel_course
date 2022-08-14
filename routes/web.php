@@ -4,6 +4,7 @@ use App\Http\Controllers\FormsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\Site2Controller;
 use App\Http\Controllers\Site3Controller;
 use App\Http\Controllers\WebController;
@@ -124,3 +125,6 @@ Route::get('send-mail', [MailController::class, 'send']);
 
 Route::get('contact-us', [MailController::class, 'contact_us']);
 Route::post('contact-us', [MailController::class, 'contact_us_data'])->name('contact');
+
+
+Route::get('posts', [PostController::class, 'index'])->name('posts.index');

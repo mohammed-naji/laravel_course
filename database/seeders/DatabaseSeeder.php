@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +16,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+        Post::truncate();
+        Category::truncate();
+
+        Post::factory(1000)->create();
+        Category::factory(1000)->create();
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
