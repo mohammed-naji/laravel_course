@@ -11,7 +11,27 @@
 <body>
 
     <div class="container my-5">
-        <h1>All posts</h1>
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>All posts</h1>
+            <a class="btn btn-success" href="{{ route('posts.create') }}">Add new post</a>
+        </div>
+
+
+        <form action="{{ route('posts.index') }}" method="get">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search here .." name="search" value="{{ request()->search }}">
+                <select name="count">
+                    <option {{ request()->count == 10 ? 'selected' : '' }} value="10">10</option>
+                    <option {{ request()->count == 15 ? 'selected' : '' }} value="15">15</option>
+                    <option {{ request()->count == 20 ? 'selected' : '' }}  value="20">20</option>
+                    <option {{ request()->count == 25 ? 'selected' : '' }}  value="25">25</option>
+                    <option {{ request()->count == $posts->total() ? 'selected' : '' }}  value="{{ $posts->total() }}">All</option>
+                </select>
+                <button class="btn btn-dark px-5" id="button-addon2">Search</button>
+              </div>
+        </form>
+
         <table class="table table-bordered table-hover table-striped">
             <tr class="table-dark">
                 <th>ID</th>
@@ -25,7 +45,7 @@
             <tr>
                 <td>{{ $post->id }}</td>
                 <td>{{ $post->title }}</td>
-                <td><img src="{{ $post->image }}" alt=""></td>
+                <td><img width="80" src="{{ asset('uploads/'.$post->image) }}" alt=""></td>
                 <td>{{ $post->created_at }}</td>
                 <td>{{ $post->updated_at }}</td>
                 <td>
@@ -34,9 +54,9 @@
                 </td>
             </tr>
             @endforeach
-
-
         </table>
+        {{-- {{ $posts->appends(['search' => request()->search, 'count' => request()->count])->links() }} --}}
+        {{ $posts->appends($_GET)->links() }}
     </div>
 
 </body>

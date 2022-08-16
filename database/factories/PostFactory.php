@@ -18,8 +18,8 @@ class PostFactory extends Factory
     {
         return [
             'title' => fake()->words(3, true),
-            'content' => fake()->paragraphs(5, true),
-            // 'image' => fake()->imageUrl()
+            'content' => fake()->paragraphs(2, true),
+            'image' => fake()->imageUrl()
         ];
     }
 }

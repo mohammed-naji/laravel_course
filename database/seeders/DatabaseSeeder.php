@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
         Post::truncate();
         Category::truncate();
 
-        Post::factory(1000)->create();
-        Category::factory(1000)->create();
+        Post::factory(500)->create();
+        Category::factory(500)->create();
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
