@@ -17,6 +17,12 @@
             <a class="btn btn-success" href="{{ route('posts.create') }}">Add new post</a>
         </div>
 
+        @if ( session('msg'))
+        <div class="alert alert-success">
+            {{ session('msg') }}
+        </div>
+        @endif
+
 
         <form action="{{ route('posts.index') }}" method="get">
             <div class="input-group mb-3">
@@ -37,6 +43,7 @@
                 <th>ID</th>
                 <th>Title</th>
                 <th>Image</th>
+                {{-- <th>Content</th> --}}
                 <th>Created At</th>
                 <th>Updated At</th>
                 <th>Actions</th>
@@ -46,11 +53,17 @@
                 <td>{{ $post->id }}</td>
                 <td>{{ $post->title }}</td>
                 <td><img width="80" src="{{ asset('uploads/'.$post->image) }}" alt=""></td>
+                {{-- <td>{!! $post->content !!}</td> --}}
                 <td>{{ $post->created_at }}</td>
                 <td>{{ $post->updated_at }}</td>
                 <td>
-                    <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
-                    <a href="#" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                    <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+                    {{-- <a href="{{ route('posts.destroy', $post->id) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a> --}}
+                    <form class="d-inline" action="{{ route('posts.destroy', $post->id) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button onclick="return confirm('Are you sure?!')" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                    </form>
                 </td>
             </tr>
             @endforeach
@@ -58,6 +71,33 @@
         {{-- {{ $posts->appends(['search' => request()->search, 'count' => request()->count])->links() }} --}}
         {{ $posts->appends($_GET)->links() }}
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        @if (session('msg'))
+            Swal.fire(
+            'Good job!',
+            '{{ session("msg") }}',
+            'success'
+            )
+        @endif
+
+    </script>
+
+
+    <script>
+        let alert = document.querySelector('.alert');
+        // console.log(alert);
+        setTimeout(() => {
+            // alert.style.display = 'none';
+            alert.remove();
+        }, 3000);
+
+        // setInterval(() => {
+        //     console.log('Interval');
+        // }, 1000);
+    </script>
 
 </body>
 </html>
