@@ -76,9 +76,9 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         // return date('d') . ' | ' . $post->updated_at->format('d');
-        if(date('d') - $post->updated_at->format('d') < 10) {
-            return 'You cant update this post';
-        }
+        // if(date('d') - $post->updated_at->format('d') < 10) {
+        //     return 'You cant update this post';
+        // }
         return view('posts.edit', compact('post'));
     }
 

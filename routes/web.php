@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FormsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RelationController;
 use App\Http\Controllers\Site2Controller;
 use App\Http\Controllers\Site3Controller;
 use App\Http\Controllers\WebController;
@@ -127,12 +129,18 @@ Route::get('contact-us', [MailController::class, 'contact_us']);
 Route::post('contact-us', [MailController::class, 'contact_us_data'])->name('contact');
 
 
-Route::get('posts', [PostController::class, 'index'])->name('posts.index');
+// Route::get('posts', [PostController::class, 'index'])->name('posts.index');
 
-Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
-Route::post('posts/store', [PostController::class, 'store'])->name('posts.store');
+// Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
+// Route::post('posts/store', [PostController::class, 'store'])->name('posts.store');
 
-Route::delete('posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
+// Route::delete('posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
 
-Route::get('posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
-Route::put('posts/{id}/update', [PostController::class, 'update'])->name('posts.update');
+// Route::get('posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
+// Route::put('posts/{id}/update', [PostController::class, 'update'])->name('posts.update');
+
+Route::resource('posts', PostController::class);
+
+Route::resource('categories', CategoryController::class);
+
+Route::get('one-to-one', [RelationController::class, 'one_to_one']);
